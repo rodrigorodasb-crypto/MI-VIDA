@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffe5ee">
+<title>Mi corazón late por ti 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", sans-serif;
+  background: #fff0f5;
+  color: #8e3859;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.screen {
+  min-height: 100vh;
+  padding: 35px 18px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: appear 0.8s ease;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* PRIMERA PANTALLA */
+
+#home {
+  position: relative;
+  background:
+    radial-gradient(circle at top left, #fff9fb, transparent 50%),
+    linear-gradient(145deg, #ffe8f0, #fbd4e4, #fff4f7);
+  overflow: hidden;
+}
+
+h1 {
+  font-size: clamp(27px, 7vw, 39px);
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 17px;
+  color: #a65a79;
+}
+
+.heart-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: clamp(120px, 35vw, 190px);
+  line-height: 1.4;
+  padding: 0;
+  filter: drop-shadow(0 9px 12px #d77b9c66);
+  animation: heartbeat 1.3s infinite;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heart-button:active {
+  transform: scale(0.85);
+}
+
+.tap {
+  margin-top: 5px;
+  font-size: 15px;
+  animation: float 2s infinite ease-in-out;
+}
+
+.floating {
+  position: absolute;
+  font-size: 23px;
+  opacity: 0.6;
+  animation: float 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+/* SEGUNDA PANTALLA */
+
+#gallery {
+  justify-content: flex-start;
+  background: linear-gradient(160deg, #fff5f8, #ffe4ee);
+  padding-top: 28px;
+}
+
+#gallery h1 {
+  margin: 5px 0;
+}
+
+.intro {
+  margin: 8px 0 20px;
+  line-height: 1.5;
+}
+
+.gallery-grid {
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  padding-bottom: 25px;
+}
+
+.photo-card {
+  background: white;
+  padding: 9px 9px 15px;
+  border-radius: 17px;
+  box-shadow: 0 5px 18px #a94f7020;
+  transform: rotate(-1deg);
+  animation: appear 0.7s ease;
+}
+
+.photo-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #ffe1eb, #f8c5d9);
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  font-family: Georgia, serif;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 13px 2px 3px;
+  color: #a33e67;
+}
+
+.back-button {
+  border: none;
+  border-radius: 25px;
+  padding: 13px 20px;
+  background: #d85d8a;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 7px;
+  box-shadow: 0 4px 12px #d85d8a30;
+}
+
+footer {
+  font-size: 14px;
+  padding: 15px;
+  color: #a65a79;
+}
+
+/* ANIMACIONES */
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 350px) {
+  .gallery-grid {
+    gap: 9px;
+  }
+
+  .caption {
+    font-size: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PANTALLA INICIAL -->
+
+<section id="home" class="screen active">
+
+  <span class="floating"
+        style="top:12%;left:12%">💕</span>
+
+  <span class="floating"
+        style="top:22%;right:13%;animation-delay:.7s">
+    ✨
+  </span>
+
+  <span class="floating"
+        style="bottom:18%;left:17%;animation-delay:1s">
+    🌷
+  </span>
+
+  <span class="floating"
+        style="bottom:13%;right:15%;animation-delay:.4s">
+    💗
+  </span>
+
+  <h1>Para mi niña bonita 💕</h1>
+
+  <p class="subtitle">
+    Hay algo que quiero mostrarte...
+  </p>
+
+  <button
+    class="heart-button"
+    aria-label="Abrir mi corazón"
+    onclick="openGallery()">
+    ❤️
+  </button>
+
+  <h2>Mi corazón late por ti</h2>
+
+  <p class="tap">
+    Toca el corazón para descubrirlo 💌
+  </p>
+
+</section>
+
+
+<!-- GALERÍA ROMÁNTICA -->
+
+<section id="gallery" class="screen">
+
+  <h1>Un pedacito de mi corazón 💗</h1>
+
+  <p class="intro">
+    Cada foto guarda un poquito de lo mucho<br>
+    que significas para mí, mi cielito. 🌷
+  </p>
+
+  <div class="gallery-grid">
+
+    <!-- FOTO 1 -->
+    <article class="photo-card">
+      <div class="photo">
+        <img src="IMG_4337(1).jpeg"
+             alt="Tu hermosa sonrisa">
+      </div>
+      <p class="caption">
+        Amo tus ojitos 🥹💗
+      </p>
+    </article>
+
+    <!-- FOTO 2 -->
+    <article class="photo-card">
+      <div class="photo">
+        <img src="IMG_4501.jpeg"
+             alt="Un recuerdo juntos">
+      </div>
+      <p class="caption">
+        Me derrito de amor por ti 💕
+      </p>
+    </article>
+
+    <!-- FOTO 3 -->
+    <article class="photo-card">
+      <div class="photo">
+        <img src="IMG_4549.jpeg"
+             alt="Un momento especial juntos">
+      </div>
+      <p class="caption">
+        Eres mi lugar favorito y seguro 🫶🏻
+      </p>
+    </article>
+
+    <!-- FOTO 4 -->
+    <article class="photo-card">
+      <div class="photo">
+        <img src="IMG_4580.jpeg"
+             alt="Nuestro recuerdo en el espejo">
+      </div>
+      <p class="caption">
+        Tus locuras combinan con mis locuras 🤭💘
+      </p>
+    </article>
+
+    <!-- FOTO 5 -->
+    <article class="photo-card">
+      <div class="photo">
+        <img src="IMG_4553.jpeg"
+             alt="Mi niña bonita entre flores">
+      </div>
+      <p class="caption">
+        Eres la niña de mis sueños 🌷
+      </p>
+    </article>
+
+  </div>
+
+  <button class="back-button" onclick="goHome()">
+    💗 Volver a mi corazón
+  </button>
+
+  <footer>
+    Hecho con todo mi amor, para ti. 💌
+  </footer>
+
+</section>
+
+
+<!-- FUNCIONES INTERACTIVAS -->
+
+<script>
+
+function openGallery() {
+  document.getElementById("home")
+    .classList.remove("active");
+
+  document.getElementById("gallery")
+    .classList.add("active");
+
+  window.scrollTo(0, 0);
+}
+
+function goHome() {
+  document.getElementById("gallery")
+    .classList.remove("active");
+
+  document.getElementById("home")
+    .classList.add("active");
+
+  window.scrollTo(0, 0);
+}
+
+</script>
+
+</body>
+</html>
